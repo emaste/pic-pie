@@ -1,0 +1,27 @@
+
+lib_pie_gcc.o:	file format ELF64-x86-64
+
+Disassembly of section .text:
+lib_function1:
+       0:	55 	pushq	%rbp
+       1:	48 89 e5 	movq	%rsp, %rbp
+       4:	89 7d fc 	movl	%edi, -4(%rbp)
+       7:	48 8b 05 00 00 00 00 	movq	(%rip), %rax
+		000000000000000a:  R_X86_64_GOTPCREL	Unknown
+       e:	8b 10 	movl	(%rax), %edx
+      10:	8b 45 fc 	movl	-4(%rbp), %eax
+      13:	01 d0 	addl	%edx, %eax
+      15:	5d 	popq	%rbp
+      16:	c3 	retq
+
+lib_function2:
+      17:	55 	pushq	%rbp
+      18:	48 89 e5 	movq	%rsp, %rbp
+      1b:	48 83 ec 08 	subq	$8, %rsp
+      1f:	89 7d fc 	movl	%edi, -4(%rbp)
+      22:	8b 45 fc 	movl	-4(%rbp), %eax
+      25:	89 c7 	movl	%eax, %edi
+      27:	e8 00 00 00 00 	callq	0 <lib_function2+0x15>
+		0000000000000028:  R_X86_64_PLT32	Unknown
+      2c:	c9 	leave
+      2d:	c3 	retq

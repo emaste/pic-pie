@@ -1,0 +1,28 @@
+
+lib_pic_clang.o:	file format ELF64-x86-64
+
+Disassembly of section .text:
+lib_function1:
+       0:	55 	pushq	%rbp
+       1:	48 89 e5 	movq	%rsp, %rbp
+       4:	48 8b 05 00 00 00 00 	movq	(%rip), %rax
+		0000000000000007:  R_X86_64_GOTPCREL	Unknown
+       b:	89 7d fc 	movl	%edi, -4(%rbp)
+       e:	8b 7d fc 	movl	-4(%rbp), %edi
+      11:	03 38 	addl	(%rax), %edi
+      13:	89 f8 	movl	%edi, %eax
+      15:	5d 	popq	%rbp
+      16:	c3 	retq
+      17:	66 0f 1f 84 00 00 00 00 00 	nopw	(%rax,%rax)
+
+lib_function2:
+      20:	55 	pushq	%rbp
+      21:	48 89 e5 	movq	%rsp, %rbp
+      24:	48 83 ec 10 	subq	$16, %rsp
+      28:	89 7d fc 	movl	%edi, -4(%rbp)
+      2b:	8b 7d fc 	movl	-4(%rbp), %edi
+      2e:	e8 00 00 00 00 	callq	0 <lib_function2+0x13>
+		000000000000002f:  R_X86_64_PLT32	Unknown
+      33:	48 83 c4 10 	addq	$16, %rsp
+      37:	5d 	popq	%rbp
+      38:	c3 	retq
